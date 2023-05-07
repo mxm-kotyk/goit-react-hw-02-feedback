@@ -18,10 +18,6 @@ export const MainWrapper = styled.div`
   align-items: center;
 `;
 
-export const Title = styled.h2`
-  font-size: 2em;
-`;
-
 export const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -46,7 +42,7 @@ export const Button = styled.button`
       0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset;
   }
   ${props => {
-    if (props.className === 'good') {
+    if (props.title === 'good') {
       return `
       background-color: #10ac84;
       background-image: url('data:image/svg+xml,${encodeURIComponent(
@@ -61,7 +57,7 @@ export const Button = styled.button`
       box-shadow: 0 3px 0 0 #1C9076, 0 4px 4px -1px rgba(0, 0, 0, 0.6),
       0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset,
       0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;`;
-    } else if (props.className === 'bad') {
+    } else if (props.title === 'bad') {
       return `
       background-color: #EE4444;
       background-image: url('data:image/svg+xml,${encodeURIComponent(

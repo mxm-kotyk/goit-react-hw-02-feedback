@@ -1,15 +1,9 @@
 import PropTypes from 'prop-types';
-import {
-  MainWrapper,
-  Title,
-  ButtonsWrapper,
-  Button,
-} from './FeedbackOptions.styled';
+import { MainWrapper, ButtonsWrapper, Button } from './FeedbackOptions.styled';
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <MainWrapper>
-      <Title>Please leave your feedback</Title>
       <ButtonsWrapper>
         {Object.keys(options).map(reaction => {
           return (
@@ -17,7 +11,7 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
               type="button"
               key={reaction}
               onClick={onLeaveFeedback}
-              className={reaction}
+              title={reaction}
             ></Button>
           );
         })}

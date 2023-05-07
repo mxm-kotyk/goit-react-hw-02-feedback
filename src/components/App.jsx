@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { Statictics } from './Statistics';
 import { FeedbackOptions } from './FeedbackOptions/';
 import { Notification } from './Notification';
+import { Section } from './Section';
 import { Wrapper } from './Wrapper.styled';
 
 export class App extends Component {
@@ -12,7 +13,7 @@ export class App extends Component {
   };
 
   incrementReaction = e => {
-    const buttonLabel = e.currentTarget.classList[0];
+    const buttonLabel = e.currentTarget.title;
     this.setState(prevState => ({ [buttonLabel]: prevState[buttonLabel] + 1 }));
   };
 
@@ -47,18 +48,25 @@ export class App extends Component {
 
     return (
       <Wrapper>
-        <FeedbackOptions options={state} onLeaveFeedback={incrementReaction} />
-        {checkFeedback() ? (
-          <Statictics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={countTotalFeedback}
-            positivePercentage={countPositiveFeedbackPercentage}
+        <Section title="Please leave your feedback">
+          <FeedbackOptions
+            options={state}
+            onLeaveFeedback={incrementReaction}
           />
-        ) : (
-          <Notification message="There is no feedback" />
-        )}
+        </Section>
+        <Section title="Statictics">
+          {checkFeedback() ? (
+            <Statictics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={countTotalFeedback}
+              positivePercentage={countPositiveFeedbackPercentage}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
+        </Section>
       </Wrapper>
     );
   }

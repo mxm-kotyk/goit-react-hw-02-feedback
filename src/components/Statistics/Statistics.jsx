@@ -10,7 +10,6 @@ export const Statictics = ({
 }) => {
   return (
     <MainWrapper>
-      <h2>Statictics</h2>
       <StatsWrapper>
         <p>Good: {good}</p>
         <p>Neutral: {neutral}</p>
