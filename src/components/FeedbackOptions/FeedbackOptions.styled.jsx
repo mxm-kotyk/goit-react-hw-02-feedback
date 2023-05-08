@@ -24,6 +24,30 @@ export const ButtonsWrapper = styled.div`
   gap: 10px;
 `;
 
+const buttonStyles = {
+  good: {
+    backgroundColor: '#10ac84',
+    defaultIcon: <FaRegSmileBeam color="white" />,
+    hoverIcon: <FaRegGrinBeam color="white" />,
+    activeIcon: <FaRegLaughSquint color="white" />,
+    boxShadowColor: '#1C9076',
+  },
+  bad: {
+    backgroundColor: '#EE4444',
+    defaultIcon: <FaRegFrownOpen color="white" />,
+    hoverIcon: <FaRegFrown color="white" />,
+    activeIcon: <FaRegSadTear color="white" />,
+    boxShadowColor: '#ac453f',
+  },
+  neutral: {
+    backgroundColor: '#1199EE',
+    defaultIcon: <FaRegMehBlank color="white" />,
+    hoverIcon: <FaRegMeh color="white" />,
+    activeIcon: <FaRegGrimace color="white" />,
+    boxShadowColor: '#2B74A3',
+  },
+};
+
 export const Button = styled.button`
   width: 50px;
   aspect-ratio: 1;
@@ -42,51 +66,25 @@ export const Button = styled.button`
       0 -18px 32px -2px rgba(255, 255, 255, 0.1) inset;
   }
   ${props => {
-    if (props.title === 'good') {
-      return `
-      background-color: #10ac84;
+    const {
+      backgroundColor,
+      defaultIcon,
+      hoverIcon,
+      activeIcon,
+      boxShadowColor,
+    } = buttonStyles[props.title];
+    return `
+      background-color: ${backgroundColor};
       background-image: url('data:image/svg+xml,${encodeURIComponent(
-        renderToString(<FaRegSmileBeam color="white" />)
+        renderToString(defaultIcon)
       )}');
       &:hover {background-image: url('data:image/svg+xml,${encodeURIComponent(
-        renderToString(<FaRegGrinBeam color="white" />)
+        renderToString(hoverIcon)
       )}');};
       &:active {background-image: url('data:image/svg+xml,${encodeURIComponent(
-        renderToString(<FaRegLaughSquint color="white" />)
+        renderToString(activeIcon)
       )}');};
-      box-shadow: 0 3px 0 0 #1C9076, 0 4px 4px -1px rgba(0, 0, 0, 0.6),
-      0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset,
-      0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;`;
-    } else if (props.title === 'bad') {
-      return `
-      background-color: #EE4444;
-      background-image: url('data:image/svg+xml,${encodeURIComponent(
-        renderToString(<FaRegFrownOpen color="white" />)
-      )}');
-      &:hover {background-image: url('data:image/svg+xml,${encodeURIComponent(
-        renderToString(<FaRegFrown color="white" />)
-      )}');};
-      &:active {background-image: url('data:image/svg+xml,${encodeURIComponent(
-        renderToString(<FaRegSadTear color="white" />)
-      )}');};
-      box-shadow: 0 3px 0 0 #ac453f, 0 4px 4px -1px rgba(0, 0, 0, 0.6),
-      0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset,
-      0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;`;
-    } else {
-      return `
-      background-color: #1199EE;
-      background-image: url('data:image/svg+xml,${encodeURIComponent(
-        renderToString(<FaRegMehBlank color="white" />)
-      )}');
-      &:hover {background-image: url('data:image/svg+xml,${encodeURIComponent(
-        renderToString(<FaRegMeh color="white" />)
-      )}');};
-      &:active {background-image: url('data:image/svg+xml,${encodeURIComponent(
-        renderToString(<FaRegGrimace color="white" />)
-      )}');};
-      box-shadow: 0 3px 0 0 #2B74A3, 0 4px 4px -1px rgba(0, 0, 0, 0.6),
-      0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset,
-      0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;`;
-    }
+      box-shadow: 0 3px 0 0 ${boxShadowColor}, 0 4px 4px -1px rgba(0, 0, 0, 0.6), 0 4px 6px 1px rgba(0, 0, 0, 0.3), 0 1px 2px 1px rgba(0, 0, 0, 0) inset, 0 18px 32px -2px rgba(255, 255, 255, 0.1) inset;
+    `;
   }};
 `;

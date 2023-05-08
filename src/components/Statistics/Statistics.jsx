@@ -1,5 +1,10 @@
 import PropTypes from 'prop-types';
-import { MainWrapper, StatsWrapper } from './Statictics.styled';
+import {
+  MainWrapper,
+  StatsWrapper,
+  Paragraph,
+  Text,
+} from './Statictics.styled';
 
 export const Statictics = ({
   good,
@@ -11,12 +16,22 @@ export const Statictics = ({
   return (
     <MainWrapper>
       <StatsWrapper>
-        <p>Good: {good}</p>
-        <p>Neutral: {neutral}</p>
-        <p>Bad: {bad}</p>
+        <Paragraph>
+          Good: <Text>{good}</Text>
+        </Paragraph>
+        <Paragraph>
+          Neutral: <Text>{neutral}</Text>
+        </Paragraph>
+        <Paragraph>
+          Bad: <Text>{bad}</Text>
+        </Paragraph>
       </StatsWrapper>
-      <p>Total: {total()}</p>
-      <p>Positive Feedback: {positivePercentage()}%</p>
+      <Paragraph>
+        Total: <Text>{total()}</Text>
+      </Paragraph>
+      <Paragraph>
+        Positive Feedback: <Text>{positivePercentage()}%</Text>
+      </Paragraph>
     </MainWrapper>
   );
 };

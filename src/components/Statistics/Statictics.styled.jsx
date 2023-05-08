@@ -14,3 +14,11 @@ export const StatsWrapper = styled.div`
   align-items: center;
   gap: 20px;
 `;
+
+export const Paragraph = styled.p`
+  font-weight: 500;
+`;
+
+export const Text = styled.span`
+  font-weight: 900;
+`;
